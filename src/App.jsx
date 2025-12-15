@@ -1,11 +1,25 @@
+import { useState } from 'react'
 import './App.css'
 
 export default function App() {
-
+  const [board, setBoard] = useState(Array(9).fill(null))
 
   return (
     <>
-      <h1>Hello</h1>
+      <main className='board'>
+        <h1>Tic Tac Toe</h1>
+        <section className="game">
+          {
+            board.map((_, index) => {
+              return (
+                <div className='square' key={index}>
+                  {index}
+                </div>
+              )
+            })
+          }
+        </section>
+      </main>
     </>
   )
 }
