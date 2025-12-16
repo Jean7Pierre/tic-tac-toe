@@ -20,19 +20,47 @@ const TURNS = {
   O: 'O'
 }
 
+const WINNER_COMBOS = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+]
+
 
 export default function App() {
   const [board, setBoard] = useState(Array(9).fill(null))
   const [turn, setTurn] = useState(TURNS.X)
+  const [winner, setWinner] = useState(null)
+
+
+  const checkWinner = (board) => {
+    for (const combo of WINNER_COMBOS) {
+      const [a, b, c] = combo
+      if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+        return board[a] //nos devolvera la letra X u O, el ganador.
+      }
+    }
+    return false
+  }
 
   const updateBoard = (index) => {
-    if (board[index]) return
+    if (winner || board[index]) return
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
     const newBoard = [...board]
     newBoard[index] = turn
     setBoard(newBoard)
-
+    const newWinner = checkWinner(newBoard)
+    if (newWinner) {
+      setWinner(newWinner)
+    } else {
+      setWinner(null)
+    }
   }
 
   return (
