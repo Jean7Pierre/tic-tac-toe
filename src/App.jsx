@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import './App.css'
 
-function Square({ index, children }) {
+function Square({ index, children, isSelected }) {
+  const classSquare = `square ${isSelected ? 'is-selected' : ''}`
   return (
-    <div className='square'>
+    <div className={classSquare}>
       {children}
     </div>
   )
@@ -35,8 +36,8 @@ export default function App() {
           }
         </section>
         <section className='turn'>
-          <Square>X</Square>
-          <Square>O</Square>
+          <Square isSelected={turn === TURNS.X}>X</Square>
+          <Square isSelected={turn === TURNS.O}>O</Square>
         </section>
       </main>
     </>
