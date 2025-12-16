@@ -86,6 +86,21 @@ export default function App() {
           <Square isSelected={turn === TURNS.X}>X</Square>
           <Square isSelected={turn === TURNS.O}>O</Square>
         </section>
+        {
+          winner !== null && (
+            <section className='winner'>
+              <div className="text">
+                <h2>
+                  {winner == false ? "Empate" : "Ganó"}
+                </h2>
+
+                <header className="win">
+                  {winner ? <Square>{winner}</Square> : <Square>:)</Square>}
+                </header>
+              </div>
+            </section>
+          )
+        }
       </main>
     </>
   )
