@@ -67,6 +67,12 @@ export default function App() {
     }
   }
 
+  const resetGame = () => {
+    setBoard(Array(9).fill(null))
+    setTurn(TURNS.X)
+    setWinner(null)
+  }
+
   return (
     <>
       <main className='board'>
@@ -97,6 +103,10 @@ export default function App() {
                 <header className="win">
                   {winner ? <Square>{winner}</Square> : <Square>:)</Square>}
                 </header>
+
+                <footer>
+                  <button onClick={resetGame}>Volver a jugar</button>
+                </footer>
               </div>
             </section>
           )
