@@ -48,6 +48,10 @@ export default function App() {
     return false
   }
 
+  const checkEndGame = (board) => {
+    return board.every((cell) => cell !== null)
+  }
+
   const updateBoard = (index) => {
     if (winner || board[index]) return
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
@@ -58,8 +62,8 @@ export default function App() {
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
       setWinner(newWinner)
-    } else {
-      setWinner(null)
+    } else if (checkEndGame(newBoard)) {
+      setWinner(false)
     }
   }
 
