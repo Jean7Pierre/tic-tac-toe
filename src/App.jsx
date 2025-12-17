@@ -2,6 +2,7 @@ import { useBoard } from './customHooks/useBoard.js'
 import Square from './components/Square.jsx'
 import { TURNS } from './constants/constants.js'
 import './App.css'
+import ModalWinner from './components/ModalWinner.jsx'
 
 export default function App() {
   const { board, updateBoard, resetGame, turn, winner } = useBoard()
@@ -26,25 +27,7 @@ export default function App() {
           <Square isSelected={turn === TURNS.X}>X</Square>
           <Square isSelected={turn === TURNS.O}>O</Square>
         </section>
-        {
-          winner !== null && (
-            <section className='winner'>
-              <div className="text">
-                <h2>
-                  {winner == false ? "Empate" : "Ganó"}
-                </h2>
-
-                <header className="win">
-                  {winner ? <Square>{winner}</Square> : <Square>:)</Square>}
-                </header>
-
-                <footer>
-                  <button onClick={resetGame}>Volver a jugar</button>
-                </footer>
-              </div>
-            </section>
-          )
-        }
+        <ModalWinner winner={winner} resetGame={resetGame} />
       </main>
     </>
   )
