@@ -1,19 +1,7 @@
 import { useState } from 'react'
+import Square from './components/Square.jsx'
 import './App.css'
 
-function Square({ index, children, isSelected, updateBoard }) {
-  const classSquare = `square ${isSelected ? 'is-selected' : ''}`
-
-  const handleBoard = () => {
-    updateBoard(index)
-  }
-
-  return (
-    <div onClick={handleBoard} className={classSquare}>
-      {children}
-    </div>
-  )
-}
 
 const TURNS = {
   X: 'X',
