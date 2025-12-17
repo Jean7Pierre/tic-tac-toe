@@ -1,4 +1,4 @@
-export default function Square(index, children, isSelected, updateBoard) {
+export default function Square({ index, children, isSelected, updateBoard }) {
   const classSquare = `square ${isSelected ? 'is-selected' : ''}`
 
   const handleBoard = () => {
