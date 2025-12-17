@@ -1,23 +1,8 @@
 import { useState } from 'react'
 import Square from './components/Square.jsx'
+import { TURNS } from './constants/constants.js'
+import { checkWinner, checkEndGame } from './utils/utils.js'
 import './App.css'
-
-
-const TURNS = {
-  X: 'X',
-  O: 'O'
-}
-
-const WINNER_COMBOS = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6]
-]
 
 
 export default function App() {
@@ -30,21 +15,6 @@ export default function App() {
     return storedTurn
   })
   const [winner, setWinner] = useState(null)
-
-
-  const checkWinner = (board) => {
-    for (const combo of WINNER_COMBOS) {
-      const [a, b, c] = combo
-      if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-        return board[a] //nos devolvera la letra X u O, el ganador.
-      }
-    }
-    return false
-  }
-
-  const checkEndGame = (board) => {
-    return board.every((cell) => cell !== null)
-  }
 
   const updateBoard = (index) => {
     if (winner || board[index]) return
