@@ -57,9 +57,13 @@ Este proyecto es un juego de Tic-Tac-Toe (Tres en Raya) creado con React, pensad
 
 ## Imagenes del proyecto
 
-- Pantalla inicial
+Pantalla inicial
 ![Inicio](./public/inicio.png) 
-- Jugando
+
+
+Jugando
 ![Juego](./public/proceso.png) 
-- Ganador
+
+
+Ganador
 ![Ganador](./public/ganador.png)
